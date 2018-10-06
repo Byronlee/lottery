@@ -1,0 +1,23 @@
+<div class="user-form">
+	<div>
+		<p>
+			<span>手机：</span>
+			<input placeholder="请输入手机号" name='phone' required="true">
+			<small class="error error-right-phone">请输入正确的手机号</small>
+			<small class="error error-exsit-phone">该手机号已经填写过注册信息</small>			
+		</p>
+		<p>
+			<span>姓名：</span>
+			<input placeholder='请输入姓名' name='name' required="true">
+			<small class="error error-name">请填写您的姓名</small>						
+		</p>	
+		<p>
+			<button>提交</button>
+		</p>
+	</div>
+</div>
+
+<div class='success'>
+	<img src=<%= image_path('right.jpg') %> />
+	<h5> 成功报名本次抽奖活动！</h5>	
+</div>
