@@ -12,12 +12,18 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
-  	<div class="top"><img src=<%= image_path('mobile.jpg') %> </div>
-  	<div class="center">
-	  	<h3>参与抽奖信息填写</h3>
-	  	<hr>
-	    <%= yield %>
-	  </div>
+  <body class="dashboard <%= controller_name + '_' + action_name %>" >
+    <div class='d-header'>
+      <a href='/'>
+        <img src=<%= image_path('logo.png') %> class='logo-left' />
+      </a>
+      <img src=<%= image_path('logo_right.png') %> class='logo-right' />
+      <p class="nav">
+        <a href='/dashboard/gifts'>奖品</a>
+        <a href='/dashboard/start'>开始</a> 
+      </p>
+
+    </div>
+    <%= yield %>
   </body>
 </html>
