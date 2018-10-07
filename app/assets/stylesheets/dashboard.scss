@@ -38,7 +38,13 @@ html {
     font-size: 35px;
     -moz-transform: rotate(45deg);
     -webkit-transform: rotate(45deg);
-    margin: 50px 61px;  	
+    // margin: 50px 61px;
+    margin: 48px 73px; 
+    small {
+	    font-size: 20px;
+	    position: absolute;
+	    margin: -5px 14px;    	
+    }     	
   }
 }
 
@@ -46,11 +52,12 @@ html {
   background-image: url(asset_path('bg1.png')); 	
 }
 
-.dashboard_gifts {
+.dashboard_gifts, .dashboard_start {
   background-image: url(asset_path('bg2.png')); 	
   .logo-right {
   	display: none;
   }	
+
   .products {
     width: 80%;
     margin: 130px auto;
@@ -81,6 +88,53 @@ html {
   }
 }
 
+.shoujiang {
+  width: 90%;
+  margin: 90px auto;
+  text-align: center;
+  color: #fff;
+  list-style: none; 
+
+  .suiji {
+  	list-style: none;
+  	width: 22%;
+  	display: inline-block;
+    padding-bottom: 30px;   	    
+
+	  &.active {
+	    border: 1px solid #FFD000;  	
+		  .xxxx  div:nth-child(5) {
+		    background: #007bfe;
+		    color: #fff;
+		    padding: 9px;	  	
+		  }
+	  }
+
+  	p {
+  		font-size: 30px;
+  	}
+  }
+
+  button {
+		background: #98760A;
+		border-radius: 4px;
+		font-size: 30px;
+		color: #FFFFFF;
+		letter-spacing: 2px;
+		text-align: center;
+		border: 0px;
+		margin-top: 80px;
+		padding: 5px 100px;
+		&.disabled {
+	    cursor: not-allowed;
+	    filter: alpha(opacity=65);
+	    -webkit-box-shadow: none;
+	    box-shadow: none;
+	    opacity: .65;
+	    pointer-events: none;			
+		}
+  }
+}
 .dashboard {
   background-size: 100% 100%;
   background-repeat: no-repeat;
@@ -143,5 +197,24 @@ html {
     		height: 600px;
     	}
     }
+  }
+}
+
+.finished {
+  color: #fff;
+  width: 1000px;
+  display: none;
+  margin: 100px auto;
+  text-align: center;
+  h3 {
+  	font-size: 60px;
+  }
+  ul {
+  	list-style: none;
+  	text-align: left;
+  	li {
+  		padding: 10px 0px;
+  		font-size: 20px;
+  	}
   }
 }

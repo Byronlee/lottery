@@ -1,0 +1,26 @@
+<div class="right-top"><p></p></div>
+<div class="shoujiang">
+	<div class="ddddd">
+	  <script id="attendeesTemplate" type="text/x-jsrender">
+			<div class="suiji {{:className}}" style="width: {{:width}}%">
+				<p>第{{:seat}}位</p>
+				<div class='xxxx '>
+		      {{for phones}}
+	         	<div>{{:phone}}</div>
+		      {{/for}}
+		    </div>
+			</div>
+	  </script>
+	</div>
+  <p><button class="disabled">敲回车确认中奖名额</button></p>
+</div>
+
+<div class='finished'>
+	<h3>共享获奖名单</h3>
+	<ul>
+	  <script id="successTemplate" type="text/x-jsrender">
+			<li>{{:ranking}}等奖获奖名单({{:num}}名): {{:list}}</li>
+	  </script>		
+	</ul>
+</div>
+
