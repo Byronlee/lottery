@@ -1,26 +1,28 @@
-<div class="right-top"><p></p></div>
-<div class="shoujiang">
-	<div class="ddddd">
-	  <script id="attendeesTemplate" type="text/x-jsrender">
-			<div class="suiji {{:className}}" style="width: {{:width}}%">
-				<p>第{{:seat}}位</p>
-				<div class='xxxx '>
-		      {{for phones}}
-	         	<div>{{:phone}}</div>
-		      {{/for}}
-		    </div>
-			</div>
-	  </script>
-	</div>
-  <p><button class="disabled">敲回车确认中奖名额</button></p>
-</div>
-
-<div class='finished'>
-	<h3>共享获奖名单</h3>
-	<ul>
-	  <script id="successTemplate" type="text/x-jsrender">
-			<li>{{:ranking}}等奖获奖名单({{:num}}名): {{:list}}</li>
-	  </script>		
+<script id="rankingTemplate" type="text/x-jsrender">
+  <div class="right-top">{{:ranking}}</div>
+	<ul class='phones'>
+		{{for phones}}
+		  <li>{{:#data.slice(0, 3)}}****{{:#data.slice(7, 11)}}</li>
+		{{/for}}
 	</ul>
+	<p><button>{{:actionName}}</button></p>
+</script>
+
+<script id="awardTemplate" type="text/x-jsrender">
+	<div>
+			<div class='left'><img src={{:url}} /> </div>
+			<div class='right'>
+				<h3 class='title'>{{:title}}</h3>
+				<h3 class='title'>{{:name}}</h3>	
+				<ul>
+					{{for fethers}}
+  					<li>{{feth}}</li>
+					{{/for}}
+				</ul>			
+			</div>
+	</div>
+</script>
+
+<div class='container'>
 </div>
 
