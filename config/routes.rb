@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
 
-  resources :users
+  resources :users do 
+  	get :success, on: :collection
+  end
+  
   resources :dashboard do 
   	get :gifts, on: :collection
   	get :start, on: :collection  	

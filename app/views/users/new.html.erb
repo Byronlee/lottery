@@ -1,23 +1,34 @@
-<div class="user-form">
+<div class="user_title"><img src=<%= image_path('ico1.png') %> /> 填写信息</div>
+
+<div class="center">
+
+<form class="user-form" action='/users',  method='post'>
 	<div>
+		<div class='kk'>
+			<p><span>*</span> 手机：</p>
+			<input name='phone' required="true">
+			<% if flash[:not_right_phone] %>
+  			<small class="error error-right-phone"><%= flash[:not_right_phone] %></small>
+  		<% end %>
+			<% if flash[:exit_phone] %>
+  			<small class="error error-right-phone"><%= flash[:exit_phone] %></small>
+  		<% end %>  		
+		</div> 
+		<div class='kk'>
+			<p><span>*</span> 姓名：</p>			
+ 			<input name='name' required="true">
+			<% if flash[:not_right_name] %>
+  			<small class="error error-right-phone"><%= flash[:not_right_name] %></small>
+  		<% end %>  		 			
+		</div>
 		<p>
-			<span>手机：</span>
-			<input placeholder="请输入手机号" name='phone' required="true">
-			<small class="error error-right-phone">请输入正确的手机号</small>
-			<small class="error error-exsit-phone">该手机号已经填写过注册信息</small>			
-		</p>
-		<p>
-			<span>姓名：</span>
-			<input placeholder='请输入姓名' name='name' required="true">
-			<small class="error error-name">请填写您的姓名</small>						
-		</p>	
-		<p>
-			<button>提交</button>
+			<button type='submit'>提交</button>
 		</p>
 	</div>
-</div>
+</form>
 
 <div class='success'>
 	<img src=<%= image_path('right.jpg') %> />
 	<h5> 成功报名本次抽奖活动！</h5>	
+</div>
 </div>
