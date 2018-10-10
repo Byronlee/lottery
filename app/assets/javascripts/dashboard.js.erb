@@ -1,0 +1,162 @@
+$(document).ready(function(){
+
+	rankingTemplate = $('#rankingTemplate')
+	awardTemplate = $('#awardTemplate')
+
+  origin_phones = [
+		'15801652103',
+		'15890345324',
+		'13809456903',
+		"18178266356",
+		"15973840254",
+		"15034847747",
+		"18428398769",
+		"13666326601",
+		"15755735735",
+		"18381857737",
+		"15095330846",
+		"18733592191",
+		"18428087962",
+		"15777261013",
+		"13698190492",
+		"15973844551",
+		"18482379341",
+		"17076437939",
+		"13626566435",
+		"13132687816",
+		"15287176497",
+		"18673861985",
+		"13560566972",
+		"13626566435",
+		"13132687816",
+		"15287176497",
+		"18673861985",
+		"13626566435",
+		"13132687816",
+		"15287176497",
+		"18673861985"				
+	]
+
+	makeRanke = function(ranking, name, phones) {
+		return {
+			ranking: ranking,
+			phones: phones,
+			actionName: name
+		}
+	}
+
+  winners = function(random_num) {
+  	numbers = [];
+  	calc = function() {
+    	return origin_phones[Math.floor(Math.random() * origin_phones.length)]
+  	}
+
+  	while (random_num > 0) {
+  		random_num--;
+  		numbers = numbers.concat(calc())
+  	}
+  	return numbers;
+  }
+
+	initLottery = function(data) {
+		$(".container").html()
+		data_new = Object.assign({}, data)
+		data_new.phones = winners(data.phones)
+		$(".container").html(rankingTemplate.render(data_new))
+	}
+
+	startLottery = function(data) {
+    window.int = setInterval(function(){initLottery(data)}, 50);
+	}
+
+	stopLottery = function(data) {
+  	clearInterval(window.int)
+		$(".container").html()
+		data_new = Object.assign({}, data)
+		data_new.phones = winners(data.phones)		
+		$(".container").html(rankingTemplate.render(data_new))
+		window.int = false;
+	}
+
+	showAward = function(award) {
+		$(".container").html()
+		$(".container").html(awardTemplate.render(award))
+	}
+
+	steps = [
+	  initLottery,
+	  startLottery,
+	  stopLottery,
+	  showAward,
+	]
+
+	latterysParams = [
+	  [
+	    makeRanke('三等奖', '开始抽奖', 28),
+	    makeRanke('三等奖', '停止抽奖', 28),
+	    makeRanke('三等奖', '展示奖品', 5),
+	  	{
+				url: "<%= asset_path('g1.png') %>",
+				title: '三等奖',
+				name: 'IPhone Micro音响',
+				fethers: ['震撼音效，精致小巧', '持久续航，放心去听', '防撞防刮，轻便省力']
+	  	}
+	  ],
+	  [
+	    makeRanke('二等奖', '开始抽奖', 28),
+	    makeRanke('二等奖', '停止抽奖', 28),
+	    makeRanke('二等奖', '展示奖品', 4),
+	  	{
+				url: "<%= asset_path('g1.png') %>",
+				title: '二等奖',
+				name: 'Mac Micro音响',
+				fethers: ['震撼音效，精致小巧', '持久续航，放心去听', '防撞防刮，轻便省力']
+	  	}	  
+	  ],
+	  [
+	    makeRanke('一等奖', '开始抽奖', 28),
+	    makeRanke('一等奖', '停止抽奖', 28),
+	    makeRanke('一等奖', '展示奖品', 1),
+	  	{
+				url: "<%= asset_path('g1.png') %>",
+				title: '一等奖',
+				name: 'Test Micro音响',
+				fethers: ['震撼音效，精致小巧', '持久续航，放心去听', '防撞防刮，轻便省力']
+	  	}	  
+	  ]
+	]
+
+	current_lottery = 0
+	current_lottery_step = 0
+
+  render = function() {
+		console.log(current_lottery)
+		console.log(current_lottery_step)
+
+
+  	params = latterysParams[current_lottery]
+  	console.log(params[current_lottery_step])
+  	console.log(steps[current_lottery_step])
+
+  	steps[current_lottery_step](params[current_lottery_step])
+  }
+
+  render()
+
+  $(document).bind('keyup', function(event) {
+		if (event.keyCode == "16" || event.keyCode == '32') {
+
+			if (current_lottery == 2 & current_lottery_step == 3) {
+				return;
+			}
+
+			if (current_lottery_step < 3) {
+				current_lottery_step++
+			} else {
+				current_lottery++
+				current_lottery_step = 0				
+			}
+			render()
+		}
+	});  
+})

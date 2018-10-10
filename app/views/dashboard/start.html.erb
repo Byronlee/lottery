@@ -1,6 +1,6 @@
 <script id="rankingTemplate" type="text/x-jsrender">
   <div class="right-top">{{:ranking}}</div>
-	<ul class='phones'>
+	<ul class='phones center'>
 		{{for phones}}
 		  <li>{{:#data.slice(0, 3)}}****{{:#data.slice(7, 11)}}</li>
 		{{/for}}
@@ -9,17 +9,21 @@
 </script>
 
 <script id="awardTemplate" type="text/x-jsrender">
-	<div>
-			<div class='left'><img src={{:url}} /> </div>
-			<div class='right'>
+  <div class="right-top"></div>	
+	<table class="center award">
+		<tr>
+			<td class='left'><img src={{:url}} /> </td>
+			<td class='right'>
 				<h3 class='title'>{{:title}}</h3>
 				<h3 class='title'>{{:name}}</h3>	
+				<p class='geduan'></p>
 				<ul>
 					{{for fethers}}
-  					<li>{{feth}}</li>
+  					<li>{{:#data}}</li>
 					{{/for}}
 				</ul>			
-			</div>
+			</td>
+		</tr>
 	</div>
 </script>
 
