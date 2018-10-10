@@ -37,11 +37,14 @@ $(document).ready(function(){
 		"18673861985"				
 	]
 
-	makeRanke = function(ranking, name, phones) {
+	makeRanke = function(ranking, name, phones, limit) {
 		return {
+			left_bg: "<%= asset_path('ico3.png') %>",
+			right_bg: "<%= asset_path('ico4.png') %>",
 			ranking: ranking,
 			phones: phones,
-			actionName: name
+			actionName: name,
+			limit: limit
 		}
 	}
 
@@ -61,6 +64,7 @@ $(document).ready(function(){
 	initLottery = function(data) {
 		$(".container").html()
 		data_new = Object.assign({}, data)
+		data_new.limit = parseInt($('select').val()) || data.limit
 		data_new.phones = winners(data.phones)
 		$(".container").html(rankingTemplate.render(data_new))
 	}
@@ -71,9 +75,11 @@ $(document).ready(function(){
 
 	stopLottery = function(data) {
   	clearInterval(window.int)
+
 		$(".container").html()
 		data_new = Object.assign({}, data)
-		data_new.phones = winners(data.phones)		
+		data_new.limit = parseInt($('select').val())
+		data_new.phones = winners(parseInt($('select').val()))
 		$(".container").html(rankingTemplate.render(data_new))
 		window.int = false;
 	}
@@ -84,48 +90,48 @@ $(document).ready(function(){
 	}
 
 	steps = [
+	  showAward,	
 	  initLottery,
 	  startLottery,
-	  stopLottery,
-	  showAward,
+	  stopLottery
 	]
 
 	latterysParams = [
 	  [
-	    makeRanke('三等奖', '开始抽奖', 28),
-	    makeRanke('三等奖', '停止抽奖', 28),
-	    makeRanke('三等奖', '展示奖品', 5),
 	  	{
 				url: "<%= asset_path('g1.png') %>",
 				title: '三等奖',
 				name: 'IPhone Micro音响',
 				fethers: ['震撼音效，精致小巧', '持久续航，放心去听', '防撞防刮，轻便省力']
-	  	}
+	  	},	  
+	    makeRanke('三等奖', '开始抽奖', 28, 6),
+	    makeRanke('三等奖', '停止抽奖', 28, 6),
+	    makeRanke('三等奖', '继续抽奖', 6, 6)
 	  ],
 	  [
-	    makeRanke('二等奖', '开始抽奖', 28),
-	    makeRanke('二等奖', '停止抽奖', 28),
-	    makeRanke('二等奖', '展示奖品', 4),
 	  	{
 				url: "<%= asset_path('g1.png') %>",
 				title: '二等奖',
 				name: 'Mac Micro音响',
 				fethers: ['震撼音效，精致小巧', '持久续航，放心去听', '防撞防刮，轻便省力']
-	  	}	  
+	  	},	  
+	    makeRanke('二等奖', '开始抽奖', 28, 4),
+	    makeRanke('二等奖', '停止抽奖', 28, 4),
+	    makeRanke('二等奖', '继续抽奖', 4, 4)
 	  ],
 	  [
-	    makeRanke('一等奖', '开始抽奖', 28),
-	    makeRanke('一等奖', '停止抽奖', 28),
-	    makeRanke('一等奖', '展示奖品', 1),
 	  	{
 				url: "<%= asset_path('g1.png') %>",
 				title: '一等奖',
 				name: 'Test Micro音响',
 				fethers: ['震撼音效，精致小巧', '持久续航，放心去听', '防撞防刮，轻便省力']
-	  	}	  
+	  	},	  
+	    makeRanke('一等奖', '开始抽奖', 28, 1),
+	    makeRanke('一等奖', '停止抽奖', 28, 1),
+	    makeRanke('一等奖', '继续抽奖', 1, 1)
 	  ]
 	]
-
+ 
 	current_lottery = 0
 	current_lottery_step = 0
 
@@ -146,17 +152,29 @@ $(document).ready(function(){
   $(document).bind('keyup', function(event) {
 		if (event.keyCode == "16" || event.keyCode == '32') {
 
-			if (current_lottery == 2 & current_lottery_step == 3) {
-				return;
-			}
-
 			if (current_lottery_step < 3) {
 				current_lottery_step++
 			} else {
-				current_lottery++
-				current_lottery_step = 0				
+
+				current_lottery_step = 1			
 			}
 			render()
 		}
-	});  
+	}); 
+
+  $(document).on('click', '.dre', function(event) {
+		if ($(this).attr('attr') == 'left') {
+			current_lottery--
+			if (current_lottery < 0) {
+				current_lottery = 0
+			}
+		} else {
+			current_lottery++
+			if (current_lottery > 2) {
+				current_lottery = 2
+			}
+		}
+		current_lottery_step = 0
+		render()
+	})
 })

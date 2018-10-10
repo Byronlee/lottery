@@ -29,7 +29,11 @@ html {
   .right-top {
     padding-top: 160px;
     text-align: center;
-    font-size: 40px;    
+    font-size: 40px;  
+    img {
+      width: 30px;
+      cursor: pointer;
+    }  
   }
   .center {
     background-image: url(asset_path('bg4.png'));
@@ -79,6 +83,9 @@ html {
       width: 20%;
       display: inline-block;
     }
+  }
+  p {
+    text-align: center;
   }
   button {
     background-image: url(asset_path('bg5.png'));
