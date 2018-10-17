@@ -1,55 +1,58 @@
 <script id="rankingTemplate" type="text/x-jsrender">
   <div class="right-top">
-  	<img src={{:left_bg}} class='dre' attr='left' />
+    <img src={{:left_bg}} class='dre' attr='left' />
     {{:ranking}}
-  	<img src={{:right_bg}} class='dre' attr='right' />    
+    <img src={{:right_bg}} class='dre' attr='right' />
   </div>
-	<ul class='phones center'>
-		{{for phones}}
-		  <li>{{:#data.slice(0, 3)}}****{{:#data.slice(7, 11)}}</li>
-		{{/for}}
-	</ul>
-	<p>
-		<button>{{:actionName}}</button>
-		<span>
-			一次性抽取
-			<select>
-			  <option value ={{:limit}}>{{:limit}}</option>				
-			  <option value ="1">1</option>
-			  <option value ="2">2</option>
-			  <option value="3">3</option>
-			  <option value="4">4</option>
-			  <option value="4">5</option>
-			  <option value="4">6</option>
-			  <option value="4">7</option>
-			  <option value="4">7</option>
-			  <option value="4">9</option>
-			  <option value="4">10</option>			  			  			  
-			</select>
-			人
-		</span>
-	</p>
+  <ul class='phones center'>
+    {{for phones}}
+      <li>{{:#data.slice(0, 3)}}****{{:#data.slice(7, 11)}}</li>
+    {{/for}}
+  </ul>
+  <p>
+    <button>{{:actionName}}</button>
+    <span>
+      一次性抽取
+      <select>
+        <option value ={{:limit}}>{{:limit}}</option>
+        <option value ="1">1</option>
+        <option value ="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+        <option value="8">8</option>
+        <option value="9">9</option>
+        <option value="10">10</option>
+      </select>
+      人
+    </span>
+  </p>
 </script>
 
 <script id="awardTemplate" type="text/x-jsrender">
-  <div class="right-top"></div>	
-	<table class="center award">
-		<tr>
-			<td class='left'><img src={{:url}} /> </td>
-			<td class='right'>
-				<h3 class='title'>{{:title}}</h3>
-				<h3 class='title'>{{:name}}</h3>	
-				<p class='geduan'></p>
-				<ul>
-					{{for fethers}}
-  					<li>{{:#data}}</li>
-					{{/for}}
-				</ul>			
-			</td>
-		</tr>
-	</div>
+  <div class="right-top"></div>
+  <table class="center award">
+    <tr>
+      <td class='left'><img src={{:url}} /> </td>
+      <td class='right'>
+        <h3 class='title'>{{:title}}</h3>
+        <h3 class='title'>{{:name}}</h3>
+        <p class='geduan'></p>
+        <ul>
+          {{for fethers}}
+            <li>{{:#data}}</li>
+          {{/for}}
+        </ul>
+      </td>
+    </tr>
+  </div>
 </script>
 
 <div class='container'>
+  <script type="text/javascript">
+    window.origin_phones = JSON.parse($('<div>').html(String('<%= @phones.to_s %>')).text());
+  </script>
 </div>
 
