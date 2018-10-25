@@ -2,28 +2,29 @@
 
 <div class="center">
 
-	<form class="user-form" action='/users',  method='post'>
-		<div>
-			<div class='kk'>
-				<p><span>*</span> 手机：</p>
-				<input name='phone' required="true">
-				<% if flash[:not_right_phone] %>
-	  			<small class="error error-right-phone"><%= flash[:not_right_phone] %></small>
-	  		<% end %>
-				<% if flash[:exit_phone] %>
-	  			<small class="error error-right-phone"><%= flash[:exit_phone] %></small>
-	  		<% end %>  		
-			</div> 
-			<div class='kk'>
-				<p><span>*</span> 姓名：</p>			
-	 			<input name='name' required="true">
-				<% if flash[:not_right_name] %>
-	  			<small class="error error-right-phone"><%= flash[:not_right_name] %></small>
-	  		<% end %>  		 			
-			</div>
-			<p>
-				<button type='submit'>提交</button>
-			</p>
-		</div>
-	</form>
+  <form class="user-form" action='/users',  method='post'>
+    <div class='kk'>
+      <p><span>*</span> 姓名：</p>
+      <input name='name' required="true">
+      <% if flash[:not_right_name] %>
+        <small class="error error-right-phone"><%= flash[:not_right_name] %></small>
+      <% end %>
+    </div>
+
+    <div>
+      <div class='kk'>
+        <p><span>*</span> 手机：</p>
+        <input name='phone' required="true">
+        <% if flash[:not_right_phone] %>
+          <small class="error error-right-phone"><%= flash[:not_right_phone] %></small>
+        <% end %>
+        <% if flash[:exit_phone] %>
+          <small class="error error-right-phone"><%= flash[:exit_phone] %></small>
+        <% end %>
+      </div>
+      <p>
+        <button type='submit'>提交</button>
+      </p>
+    </div>
+  </form>
 </div>

@@ -10,7 +10,7 @@ class UsersController < ApplicationController
     if params[:name].blank?
       flash[:not_right_name] = '请输入正确的姓名'
       return redirect_to :back
-    elsif params[:name].blank?
+    elsif params[:phone].blank? || !(/1\d{10}/.match?(params[:phone]))
       flash[:not_right_phone] = '请输入正确的手机号码'
       return redirect_to :back
     end
