@@ -2,7 +2,7 @@ $(document).ready(function(){
 
   rankingTemplate = $('#rankingTemplate')
   awardTemplate = $('#awardTemplate')
-
+  globel_winners = []
 
   makeRanke = function(ranking, name, phones, limit) {
     return {
@@ -16,9 +16,13 @@ $(document).ready(function(){
   }
 
   winners = function(random_num) {
+    tem_origin_phones = origin_phones.filter(function( el ) {
+      return globel_winners.indexOf( el ) < 0;
+    } );
+
     numbers = [];
     calc = function() {
-      return origin_phones[Math.floor(Math.random() * origin_phones.length)]
+      return tem_origin_phones[Math.floor(Math.random() * tem_origin_phones.length)]
     }
 
     while (random_num > 0) {
@@ -47,6 +51,7 @@ $(document).ready(function(){
     data_new = Object.assign({}, data)
     data_new.limit = parseInt($('select').val())
     data_new.phones = winners(parseInt($('select').val()))
+    globel_winners = globel_winners.concat(data_new.phones)
     $(".container").html(rankingTemplate.render(data_new))
     window.int = false;
   }
