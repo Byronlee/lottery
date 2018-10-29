@@ -71,36 +71,58 @@ $(document).ready(function(){
   latterysParams = [
     [
       {
-        url: "<%= asset_path('g3.png') %>",
+        url: "<%= asset_path('jc.png') %>",
+        title: '参与奖',
+        name: '索尼无线蓝牙便携音箱',
+        fethers: ['超长5小时播放', '蓝牙连接 自由享受', '彩色时代 精彩生活']
+      },
+      makeRanke('参与奖', '开始抽奖', 28, 17),
+      makeRanke('参与奖', '停止抽奖', 28, 17),
+      makeRanke('参与奖', '继续抽奖', 17, 17)
+    ],
+    [
+      {
+        url: "<%= asset_path('j3.png') %>",
         title: '三等奖',
-        name: '惠普hpsprocket100口袋打印机',
-        fethers: ['迷你小巧, 放入口袋', '蓝牙/智能手机连接', '无需墨水, 仅需要照片纸即可打印']
+        name: '飞利浦加湿器',
+        fethers: ['持久享受 健康空气', '技术化过滤与加湿', '智能化操作 个性化设置']
       },
-      makeRanke('三等奖', '开始抽奖', 28, 6),
-      makeRanke('三等奖', '停止抽奖', 28, 6),
-      makeRanke('三等奖', '继续抽奖', 6, 6)
+      makeRanke('三等奖', '开始抽奖', 28, 10),
+      makeRanke('三等奖', '停止抽奖', 28, 10),
+      makeRanke('三等奖', '继续抽奖', 10, 10)
     ],
     [
       {
-        url: "<%= asset_path('g1.png') %>",
+        url: "<%= asset_path('j2.png') %>",
         title: '二等奖',
-        name: 'Bose Micro音响',
-        fethers: ['震撼音效，精致小巧', '持久续航，放心去听', '防撞防刮，轻便省力']
+        name: '惠普无线打印机一体机',
+        fethers: ['自动双面打印 胜任多种打印任务', '2.2英寸液晶触摸 便捷操作', '高性价比耗材 品质经济之选']
       },
-      makeRanke('二等奖', '开始抽奖', 28, 4),
-      makeRanke('二等奖', '停止抽奖', 28, 4),
-      makeRanke('二等奖', '继续抽奖', 4, 4)
+      makeRanke('二等奖', '开始抽奖', 28, 5),
+      makeRanke('二等奖', '停止抽奖', 28, 5),
+      makeRanke('二等奖', '继续抽奖', 5, 5)
     ],
     [
       {
-        url: "<%= asset_path('g2.png') %>",
+        url: "<%= asset_path('j1.png') %>",
         title: '一等奖',
-        name: '飞利浦(PHILIPS)空气净化器',
-        fethers: ['VitaShield IPS维护盾', '滤网升级 新国标新滤网', '智能化设计']
+        name: '雀巢咖啡胶囊咖啡机',
+        fethers: ['1分钟拥有个性咖啡馆', '瑞士技术打造香醇口感', '无需繁琐清洁']
       },
-      makeRanke('一等奖', '开始抽奖', 28, 1),
-      makeRanke('一等奖', '停止抽奖', 28, 1),
-      makeRanke('一等奖', '继续抽奖', 1, 1)
+      makeRanke('一等奖', '开始抽奖', 28, 3),
+      makeRanke('一等奖', '停止抽奖', 28, 3),
+      makeRanke('一等奖', '继续抽奖', 3, 3)
+    ],
+    [
+      {
+        url: "<%= asset_path('jt.png') %>",
+        title: '特等奖',
+        name: '小米电动滑板',
+        fethers: ['简约几何设计 1分钟轻松上手', '30公里超长续航', '双重刹车系统 便携折叠']
+      },
+      makeRanke('特等奖', '开始抽奖', 28, 1),
+      makeRanke('特等奖', '停止抽奖', 28, 1),
+      makeRanke('特等奖', '继续抽奖', 1, 1)
     ]
   ]
 
@@ -142,8 +164,8 @@ $(document).ready(function(){
       }
     } else {
       current_lottery++
-      if (current_lottery > 2) {
-        current_lottery = 2
+      if (current_lottery > 4) {
+        current_lottery = 4
       }
     }
     current_lottery_step = 0
